@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>404</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        a:hover,
+        a:focus {
+            text-decoration: none;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+        <%- include('../partials/header.ejs') %>
+        <p><%=errorMessage%></p>
+    </div>
+    
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

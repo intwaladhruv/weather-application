@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>About</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="icon" href="/img/Group 16.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        a:hover,
+        a:focus {
+            text-decoration: none;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content container">
+        <%- include('../partials/header.ejs') %>
+        <div class="row text-center" style="margin-bottom: 15px;;">
+            <div class="col-md-2 info">
+				<img src="/img/deep.jpg" class="infoimg"><br>
+				<h3>Deep Lad</h3>
+				<p>Software Engineer<br>Student at Humber</p>
+			</div>
+            <div class="col-md-2 info">
+				<img src="/img/dhruv.jpg" class="infoimg"><br>
+				<h3>Dhruv Intwala</h3>
+				<p>Software Engineer<br>Student at Humber</p>
+			</div>
+            <div class="col-md-2 info">
+				<img src="/img/bhavya.jpg" class="infoimg"><br>
+				<h3>Bhavya Shah</h3>
+				<p>Software Engineer<br>Student at Humber</p>
+			</div>
+            <div class="col-md-2 info">
+				<img src="/img/shruti.jpg" class="infoimg"><br>
+				<h3>Shruti Italia</h3>
+				<p>Software Engineer<br>Student at Humber</p>
+			</div>
+        </div>
+        <ul>
+            <li><p style="color: #3f51b5;">Credits :</p></li>
+            <li><p style="color: #3f51b5;font-size: large;"><span class="dot1"></span>&nbsp;weatherapi.com</p></li>
+            <li><p style="color: #3f51b5;font-size: large;"><span class="dot1"></span>&nbsp;Mapbox Live Location Platform</p></li>
+        </ul>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

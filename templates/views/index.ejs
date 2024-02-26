@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Weather</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="icon" href="/img/Group 16.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        a:hover,
+        a:focus {
+            text-decoration: none;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body onload="getLocation()">
+    <div class="main-content container">
+        <%- include('../partials/header.ejs') %>
+        <p class="demop">Use this site to get your weather!</p>
+        <form class="input_location row">
+            <inline><input type="text d-inline" placeholder="Location">
+            <button class="row d-inline"><img src="/img/search.ico" alt="Search" class="sea"></button></inline>
+        </form>
+        <p id="message-1" style="margin-top: 10px;"></p>
+        <p id="message-2"></p>
+        <p class="demoText" >Today : </p>
+        <div class="row text-center days">
+            <div class="col-md day d1">
+                <p class="wd" id="HDay1"></p>
+                <div class="t2">
+                    <img alt="" id="HImg1" class="ics d-inline">
+                    <p id="HIcon1" class="textM"></p>
+                </div>
+                <p class="tmp2 d-inline" id="HTemp1"><sup><p id="o" class="d-inline"></p></sup></p>
+                <div class="t1">
+                    <p class="d-inline" id="HMin1">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HMax1"></p>
+                    </p>
+                    <p class="d-inline" id="HWMin1">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HWMax1"></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d2">
+                <p class="wd" id="HDay2"></p>
+                <div class="t2">
+                    <img alt="" id="HImg2" class="ics d-inline">
+                    <p id="HIcon2" class="textM"></p>
+                </div>
+                <p class="tmp2 d-inline" id="HTemp2"><sup><p id="o" class="d-inline"></p></sup></p>
+                <div class="t1">
+                    <p class="d-inline" id="HMin2">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HMax2"></p>
+                    </p>
+                    <p class="d-inline" id="HWMin2">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HWMax2"></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d3">
+                <p class="wd" id="HDay3"></p>
+                <div class="t2">
+                    <img alt="" id="HImg3" class="ics d-inline">
+                    <p id="HIcon3" class="textM"></p>
+                </div>
+                <p class="tmp2 d-inline" id="HTemp3"><sup><p id="o" class="d-inline"></p></sup></p>
+                <div class="t1">
+                    <p class="d-inline" id="HMin3">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HMax3"></p>
+                    </p>
+                    <p class="d-inline" id="HWMin3">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HWMax3"></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d4">
+                <p class="wd" id="HDay4"></p>
+                <div class="t2">
+                    <img alt="" id="HImg4" class="ics d-inline">
+                    <p id="HIcon4" class="textM"></p>
+                </div>
+                <p class="tmp2 d-inline" id="HTemp4"><sup><p id="o" class="d-inline"></p></sup></p>
+                <div class="t1">
+                    <p class="d-inline" id="HMin4">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HMax4"></p>
+                    </p>
+                    <p class="d-inline" id="HWMin4">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HWMax4"></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d5">
+                <p class="wd" id="HDay5"></p>
+                <div class="t2">
+                    <img alt="" id="HImg5" class="ics d-inline">
+                    <p id="HIcon5" class="textM"></p>
+                </div>
+                <p class="tmp2 d-inline" id="HTemp5"><sup><p id="o" class="d-inline"></p></sup></p>
+                <div class="t1">
+                    <p class="d-inline" id="HMin5">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HMax5"></p>
+                    </p>
+                    <p class="d-inline" id="HWMin5">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HWMax5"></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d6">
+                <p class="wd" id="HDay6"></p>
+                <div class="t2">
+                    <img alt="" id="HImg6" class="ics d-inline">
+                    <p id="HIcon6" class="textM"></p>
+                </div>
+                <p class="tmp2 d-inline" id="HTemp6"><sup><p id="o" class="d-inline"></p></sup></p>
+                <div class="t1">
+                    <p class="d-inline" id="HMin6">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HMax6"></p>
+                    </p>
+                    <p class="d-inline" id="HWMin6">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HWMax6"></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d7">
+                <p class="wd" id="HDay7"></p>
+                <div class="t2">
+                    <img alt="" id="HImg7" class="ics d-inline">
+                    <p id="HIcon7" class="textM"></p>
+                </div>
+                <p class="tmp2 d-inline" id="HTemp7"><sup><p id="o" class="d-inline"></p></sup></p>
+                <div class="t1">
+                    <p class="d-inline" id="HMin7">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HMax7"></p>
+                    </p>
+                    <p class="d-inline" id="HWMin7">
+                        <p class="d-inline">&nbsp-&nbsp</p>
+                        <p class="d-inline" id="HWMax7"></p>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <p class="demoText" > Weekly :</p>
+        <div class="row text-center days">
+            <div class="col-md day d1">
+                <p class="wd" id="Day1"></p>
+                <p class="dt" id="Date1"></p>
+                <div class="t2">
+                    <img alt="" id="Img1" class="ics d-inline">
+                    <p id="Icon1" class="textM"></p>
+                </div>
+                <p class="tmp d-inline" id="Temp1"></p>
+                <div class="t1">
+                    <p class="d-inline" id="Min1"><sup>
+                            <p id="o" class="d-inline"></p>
+                        </sup>
+                        <p class="d-inline"> - </p>
+                        <p class="d-inline" id="Max1"><sup>
+                                <p id="o" class="d-inline"></p>
+                            </sup></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d2">
+                <p class="wd" id="Day2"></p>
+                <p class="dt" id="Date2"></p>
+                <div class="t2">
+                    <img alt="" id="Img2" class="ics d-inline">
+                    <p id="Icon2" class="textM"></p>
+                </div>
+                <p class="tmp d-inline" id="Temp2"></p>
+                <div class="t1">
+                    <p class="d-inline" id="Min2"><sup>
+                            <p id="o" class="d-inline"></p>
+                        </sup>
+                        <p class="d-inline"> - </p>
+                        <p class="d-inline" id="Max2"><sup>
+                                <p id="o" class="d-inline"></p>
+                            </sup></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d3">
+                <p class="wd" id="Day3"></p>
+                <p class="dt" id="Date3"></p>
+                <div class="t2">
+                    <img alt="" id="Img3" class="ics d-inline">
+                    <p id="Icon3" class="textM"></p>
+                </div>
+                <p class="tmp d-inline" id="Temp3"></p>
+                <div class="t1">
+                    <p class="d-inline" id="Min3"><sup>
+                            <p id="o" class="d-inline"></p>
+                        </sup>
+                        <p class="d-inline"> - </p>
+                        <p class="d-inline" id="Max3"><sup>
+                                <p id="o" class="d-inline"></p>
+                            </sup></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d4">
+                <p class="wd" id="Day4"></p>
+                <p class="dt" id="Date4"></p>
+                <div class="t2">
+                    <img alt="" id="Img4" class="ics d-inline">
+                    <p id="Icon4" class="textM"></p>
+                </div>
+                <p class="tmp d-inline" id="Temp4"></p>
+                <div class="t1">
+                    <p class="d-inline" id="Min4"><sup>
+                            <p id="o" class="d-inline"></p>
+                        </sup>
+                        <p class="d-inline"> - </p>
+                        <p class="d-inline" id="Max4"><sup>
+                                <p id="o" class="d-inline"></p>
+                            </sup></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d5">
+                <p class="wd" id="Day5"></p>
+                <p class="dt" id="Date5"></p>
+                <div class="t2">
+                    <img alt="" id="Img5" class="ics d-inline">
+                    <p id="Icon5" class="textM"></p>
+                </div>
+                <p class="tmp d-inline" id="Temp5"></p>
+                <div class="t1">
+                    <p class="d-inline" id="Min5"><sup>
+                            <p id="o" class="d-inline"></p>
+                        </sup>
+                        <p class="d-inline"> - </p>
+                        <p class="d-inline" id="Max5"><sup>
+                                <p id="o" class="d-inline"></p>
+                            </sup></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d6">
+                <p class="wd" id="Day6"></p>
+                <p class="dt" id="Date6"></p>
+                <div class="t2">
+                    <img alt="" id="Img6" class="ics d-inline">
+                    <p id="Icon6" class="textM"></p>
+                </div>
+                <p class="tmp d-inline" id="Temp6"></p>
+                <div class="t1">
+                    <p class="d-inline" id="Min6"><sup>
+                            <p id="o" class="d-inline"></p>
+                        </sup>
+                        <p class="d-inline"> - </p>
+                        <p class="d-inline" id="Max6"><sup>
+                                <p id="o" class="d-inline"></p>
+                            </sup></p>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md day d7">
+                <p class="wd" id="Day7"></p>
+                <p class="dt" id="Date7"></p>
+                <div class="t2">
+                    <img alt="" id="Img7" class="ics d-inline">
+                    <p id="Icon7" class="textM"></p>
+                </div>
+                <p class="tmp d-inline" id="Temp7"></p>
+                <div class="t1">
+                    <p class="d-inline" id="Min7"><sup>
+                            <p id="o" class="d-inline"></p>
+                        </sup>
+                        <p class="d-inline"> - </p>
+                        <p class="d-inline" id="Max7"><sup>
+                                <p id="o" class="d-inline"></p>
+                            </sup></p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+    <script>
+        var elements = document.querySelectorAll('[id="o"]')
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].innerHTML = '&deg;';
+        }
+    </script>
+    <script src="/js/app.js"></script>
+    <script src="/js/geo.js"></script>
+</body>
+
+</html>
